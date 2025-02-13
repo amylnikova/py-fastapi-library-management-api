@@ -9,6 +9,9 @@ def get_authors(db: Session, skip: int = 0, limit: int = 10):
 def get_author_by_id(db: Session, author_id: int):
     return db.query(models.DBAuthor).filter(models.DBAuthor.id == author_id).first()
 
+def get_author_by_name(db: Session, name: str):
+    return db.query(models.DBAuthor).filter(models.DBAuthor.name == name).first()
+
 def create_author(db: Session, author: schemas.AuthorCreate):
     db_author = models.DBAuthor(
         name=author.name,
